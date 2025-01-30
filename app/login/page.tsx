@@ -19,9 +19,6 @@ function login() {
     window.location.href = '/api/auth/login';
   }
 
-
-
-
   return (
   <Center w={'100dvw'} h={'100dvh'} >
       <Card w={isMobile ? '80%' : '30%'} h={isMobile ? '55%':'60%'} radius='lg' p={'xl'}>
