@@ -1,24 +1,24 @@
-import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
-import { Welcome } from '../components/Welcome/Welcome';
+import { auth0 } from "@/lib/auth0";
+import { redirect } from "next/navigation";
 
-export default function HomePage() {
+export default async function Home() {
+  // Fetch the user session
+  const session = await auth0.getSession();
+
+  // If no session, show sign-up and login buttons
+  if (!session) {
+      redirect('/login');
+  }
+
+  // If session exists, show a welcome message and logout button
   return (
-    <>
-    
-      <Welcome />
-      <ColorSchemeToggle />
-    </>
+    <main>
+      <h1>Welcome, {session.user.name}!</h1>
+      <p>
+        <a href="/auth/logout">
+          <button>Log out</button>
+        </a>
+      </p>
+    </main>
   );
 }
-
-
-// import Link from 'next/link';
-
-// export default function Home() {
-//   return (
-//     <div>
-//       <h1>Welcome to My App</h1>
-//       <Link href="/api/auth/login">Login</Link>
-//     </div>
-//   );
-// }

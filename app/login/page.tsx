@@ -16,9 +16,8 @@ function login() {
   const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword(!showPassword);
   const handleLogin = () => {
-    window.location.href = '/api/auth/login';
+    window.location.href = '/auth/login';
   }
-
   return (
   <Center w={'100dvw'} h={'100dvh'} >
       <Card w={isMobile ? '80%' : '30%'} h={isMobile ? '55%':'60%'} radius='lg' p={'xl'}>
@@ -42,7 +41,7 @@ function login() {
         </Stack>
         <Button variant="filled" color={'teal.8'} onClick={handleLogin}>Sign In</Button>
         <Text ta={'center'} size="sm">
-          Dont have an account? <a href="/api/auth/login">Register</a>
+          Dont have an account? <a href="/auth/login">Register</a>
         </Text>
         </Stack>
       </Card>
